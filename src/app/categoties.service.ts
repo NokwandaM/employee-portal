@@ -23,10 +23,10 @@ export class CategotiesService {
     })
   }
 
-  getCategories(){
+  getCategories() {
     let categories = []
 
-    this.db.collection("categories").snapshotChanges().subscribe( result =>{
+    this.db.collection("categories").snapshotChanges().subscribe(result => {
       console.log(result);
       result.forEach((doc) => {
         categories.push(doc.payload.doc.data())
@@ -35,9 +35,9 @@ export class CategotiesService {
         })
         console.log(categories);
       });
-      
+
     })
     return categories
   }
-  
+
 }
