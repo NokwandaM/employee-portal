@@ -1,14 +1,24 @@
 
-<label>Product Name</label>
-<input [(ngModel)]= "productName">
+<p>Add New Product</p>
+<form [formGroup]="productForm">
 
-<label>Product Price</label>
-<input [(ngModel)]= "productPrice">
+    <label>Product Name</label>
+    <input formControlName= "productName"><br>
 
-<label>Product Image</label>
-<input [(ngModel)]= "productImage">
+    <label>Product Price</label>
+    <input formControlName= "productPrice"><br>
+    
+    <label>Product Image</label>
+    <input formControlName= "productImage"><br>
+    
+    <label>Product Description</label>
+    <input  formControlName= "productDescription"><br>
 
-<label>Product Description</label>
-<input  [(ngModel)]= "productDescription">
+    <select formControlName="categoryControl">
+        <option [ngValue]="category" *ngFor="let category of categories">{{category.categoryName}}</option>
+    </select>
+
+</form>
+
 
 <button (click)="save()" >Save Product</button>

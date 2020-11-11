@@ -1,0 +1,17 @@
+<p>Register</p>
+
+<label>Name</label>
+<input [(ngModel)]="name">
+<br>
+<label>Age</label>
+<input [(ngModel)]="age">
+<br>
+<label>Email</label>
+<input [(ngModel)]="email">
+<br>
+<label>Password</label>
+<input [(ngModel)]="password">
+<br>
+
+<button (click)="signUp()" >Signup</button>
+<a routerLink="/login">Login</a>

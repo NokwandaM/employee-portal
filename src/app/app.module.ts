@@ -10,6 +10,9 @@ import { NewProductComponent } from './new-product/new-product.component';
 import { FormsModule } from '@angular/forms';
 import { CategotiesComponent } from './categoties/categoties.component';
 import { NewCategotyComponent } from './new-categoty/new-categoty.component';
+import {  ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import { NewCategotyComponent } from './new-categoty/new-categoty.component';
     ProductComponent,
     NewProductComponent,
     CategotiesComponent,
-    NewCategotyComponent
+    NewCategotyComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

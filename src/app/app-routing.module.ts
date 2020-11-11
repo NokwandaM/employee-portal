@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategotiesComponent } from './categoties/categoties.component';
+import { LoginComponent } from './login/login.component';
 import { NewCategotyComponent } from './new-categoty/new-categoty.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { ProductService } from './product.service';
 import { ProductComponent } from './product/product.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
-    {path: "", component: CategotiesComponent},
+    {path: "", component: LoginComponent},
+    {path: "categories", component: CategotiesComponent},
     {path: "newProduct", component: NewProductComponent},
     {path: "newCategory", component: NewCategotyComponent},
     {path: "product", component: ProductComponent},
-
+    {path: "register", component: RegisterComponent},
+    {path: "login", component: LoginComponent},
 ];
 
 @NgModule({
