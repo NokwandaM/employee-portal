@@ -9,14 +9,14 @@ import { AutheticationService } from '../authetication.service';
 export class LoginComponent implements OnInit {
   email
   password
-
+  loggonInUser
   constructor(public authenticateService:AutheticationService) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    this.authenticateService.signInUser(this.email, this.password)
+   this.authenticateService.signInUser(this.email, this.password);
+  
   }
-
 }
