@@ -13,6 +13,7 @@ import { NewCategotyComponent } from './new-categoty/new-categoty.component';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     CategotiesComponent,
     NewCategotyComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

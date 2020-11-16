@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AutheticationService } from '../authetication.service';
 import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,15 +14,20 @@ export class RegisterComponent implements OnInit {
   name
   password
   email
+  phonenumber
   user:User
-  constructor(public authenticateService:AutheticationService) { }
+  currentUser
+
+  constructor(public authenticateService:AutheticationService, public router :Router) { }
 
   ngOnInit(): void {
   }
 
   signUp(){
-    this.user = new User(this.name,this.age, this.email, this.password);
+    this.user = new User(this.name,this.age, this.phonenumber,this.email, this.password);
     this.authenticateService.signUpUser(this.user)
+    this.authenticateService.getCurrentUser()
+   
   }
 
 

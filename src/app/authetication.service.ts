@@ -12,6 +12,9 @@ export class AutheticationService {
   constructor( private db: AngularFirestore) { }
 
   signUpUser(user){
+    var database = firebase.database();
+      console.log(user);
+      
       let message = ""
     
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password).catch((error) =>{
@@ -20,15 +23,25 @@ export class AutheticationService {
       var errorMessage = error.message;
       message = errorMessage
       console.log(errorMessage);
-    }).then( user =>{
-      console.log(user);
-      if(user){
+
+    }).then( results =>{
+      console.log(results);
+      if(results){
         message = "successfully registered"
+        firebase.database().ref('users/' + results.user.uid).set({
+          name: user.name,
+          email: user.email,
+          age : user.age,
+          phonenumber: user.phonenumber
+        });
+        console.log(message);
+      
       }else{
-        
+       
       }
       
     });
+    
   }
 
   signInUser(email,password){
@@ -51,7 +64,6 @@ export class AutheticationService {
         message = user.user.email + " has successfully logged in"
         console.log(message);
       }else{
-        
         console.log(message);
       }
       
@@ -62,7 +74,9 @@ export class AutheticationService {
 
   removingUser(){}
 
-  forgotPassword(){}
+  forgotPassword(){
+
+  }
 
   logout(){
     firebase.auth().signOut().then(()  =>{
@@ -73,5 +87,22 @@ export class AutheticationService {
       console.log(error);
       
     });
+  }
+
+  getCurrentUser(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+      
+        var userId = user.uid;
+        console.log(userId);
+        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) =>{
+          console.log(snapshot);
+          
+        });
+      } else {
+        // No user is signed in.
+      }
+    });
+
   }
 }
