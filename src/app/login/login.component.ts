@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AutheticationService } from '../authetication.service';
 
 @Component({
@@ -10,13 +11,16 @@ export class LoginComponent implements OnInit {
   email
   password
   loggonInUser
-  constructor(public authenticateService:AutheticationService) { }
+  constructor(public authenticateService:AutheticationService, public router:Router) { }
 
   ngOnInit(): void {
+    this.authenticateService.getCurrentUser()
   }
 
   login(){
    this.authenticateService.signInUser(this.email, this.password);
-  
+   this.loggonInUser = this.authenticateService.userInfo
+   this.router.navigateByUrl("/profile")
+    
   }
 }

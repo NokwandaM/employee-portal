@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
     this.authenticateService.signUpUser(this.user)
     this.authenticateService.getCurrentUser()
    
+   
   }
 
 

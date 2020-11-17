@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
+import { User } from './user';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutheticationService {
-
+  userInfo:User 
 
   constructor( private db: AngularFirestore) { }
 
@@ -90,19 +91,25 @@ export class AutheticationService {
   }
 
   getCurrentUser(){
-    firebase.auth().onAuthStateChanged(function(user) {
+   
+    firebase.auth().onAuthStateChanged((user) =>{
       if (user) {
-      
         var userId = user.uid;
-        console.log(userId);
-        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) =>{
-          console.log(snapshot);
-          
-        });
+       firebase.database().ref('/users/' + userId).once('value').then( userProfile =>{
+          this.userInfo = new User(userProfile.val().name, userProfile.val().age, userProfile.val().phonenumber,userProfile.val().email)
+          console.log(this.userInfo);
+          // return userInfo
+        })
       } else {
-        // No user is signed in.
+        console.log("user not logged in");
+        
       }
     });
 
+    
+    
   }
+
+
+
 }

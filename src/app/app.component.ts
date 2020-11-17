@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AutheticationService } from './authetication.service';
 import { EmployeeService } from './employee.service';
 
 @Component({
@@ -11,12 +12,15 @@ export class AppComponent {
   title = 'employees';
   employees: any
   newEmo = [{id:3,name:"Nokwanda",department:"Hr"}]
-  constructor(public employeeService:EmployeeService){
+  loggedUser 
+  constructor(public employeeService:EmployeeService, public authService:AutheticationService){
   }
 
   ngOnInit(){
     this.getEmployees()
-
+    this.loggedUser = this.authService.userInfo
+    console.log(this.loggedUser );
+    
       
     
   }
