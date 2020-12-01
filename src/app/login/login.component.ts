@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   login(){
    this.authenticateService.signInUser(this.email, this.password);
+   this.authenticateService.getCurrentUser()
    this.loggonInUser = this.authenticateService.userInfo
    this.router.navigateByUrl("/profile")
     

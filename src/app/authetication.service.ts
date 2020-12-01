@@ -63,6 +63,8 @@ export class AutheticationService {
 
       if(user){
         message = user.user.email + " has successfully logged in"
+        localStorage.setItem('userID', user.user.uid);
+        console.log(localStorage.getItem('userID'));
         console.log(message);
       }else{
         console.log(message);
@@ -96,7 +98,7 @@ export class AutheticationService {
       if (user) {
         var userId = user.uid;
        firebase.database().ref('/users/' + userId).once('value').then( userProfile =>{
-          this.userInfo = new User(userProfile.val().name, userProfile.val().age, userProfile.val().phonenumber,userProfile.val().email)
+          this.userInfo = new User(userProfile.val().name, userProfile.val().age, userProfile.val().phonenumber,userProfile.val().email,"" , userId )
           console.log(this.userInfo);
           // return userInfo
         })

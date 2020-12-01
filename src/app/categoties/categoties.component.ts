@@ -12,6 +12,7 @@ export class CategotiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories = this.categoryService.getCategories()
+    this.categoryService.getCat()
   }
 
 }

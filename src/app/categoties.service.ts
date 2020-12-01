@@ -40,4 +40,12 @@ export class CategotiesService {
     return categories
   }
 
+  getCat(){
+    this.db.collection('categories', ref => ref.where('categoryName' , '==' , 'Ladies')).valueChanges().subscribe( val =>
+      {
+        console.log(val);
+        
+      })
+  }
+
 }

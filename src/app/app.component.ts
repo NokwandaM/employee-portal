@@ -18,6 +18,7 @@ export class AppComponent {
 
   ngOnInit(){
     this.getEmployees()
+    this.authService.getCurrentUser()
     this.loggedUser = this.authService.userInfo
     console.log(this.loggedUser );
     
